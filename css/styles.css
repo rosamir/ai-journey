@@ -114,6 +114,18 @@ body[data-continent="summit"] .weather-overlay { background-image: linear-gradie
   .station-content-card { padding: 2rem 1.35rem; }
 }
 
+/* Explicit contrast pairs for every interactive state on light content surfaces. */
+.station-content-card .question-era-game { background: #e8f1e8; border-color: #5f9384; color: #203f43; }
+.station-content-card .question-era-game .feature-title,
+.station-content-card .question-era-game .feature-text { color: #203f43; }
+.station-content-card .q-token-btn { background: #f9fcf7; border-color: #2b7d7b; color: #24484a; }
+.station-content-card .q-token-btn:hover { background: #dceee7; color: #193f42; }
+.station-content-card .q-token-btn.active { background: #1e6c69; border-color: #1e6c69; color: #ffffff; }
+.station-content-card .built-question-box { background: #f8f4e9; border-color: #bd8159; color: #29484b; }
+.station-content-card .altitude-perspective-text { background: #f8f4e9; color: #29484b; }
+.station-content-card .quiz-opt-btn.active { background: #c9ecea; border-color: #147b78; color: #163f42; }
+.station-content-card .quiz-opt-btn.active .quiz-tag { background: #147b78; color: #ffffff; }
+
 .journey-hud-bar { position: fixed; padding-bottom: 1.35rem; }
 .journey-hud-bar .hud-author { position: absolute; right: 1rem; bottom: .32rem; padding: 0; border: 0; color: #80908a; font-size: .66rem; font-weight: 600; }
 .finish-badge-box { display: inline-flex; flex-direction: column-reverse; align-items: center; justify-content: center; gap: .45rem; min-width: 150px; }

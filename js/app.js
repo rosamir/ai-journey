@@ -159,22 +159,6 @@ function renderStations(data, parent) {
         </div>
       ` : '';
 
-      // Station 4: Question Era Builder
-      let qBuilderHtml = station.questionEraBuilder ? `
-        <div class="question-era-game">
-          <h3 class="feature-title"><i data-lucide="cpu"></i> בחירת שאלה אסטרטגית</h3>
-          <p class="feature-text">בחרו שאלה אחת שתעזור למקד את הדיון הארגוני:</p>
-          <div class="q-tokens" id="q-token-list">
-            <button class="q-token-btn" data-question="מהו הדבר הברור מאליו שאנחנו מפספסים?" aria-pressed="false">מהו הדבר הברור מאליו שאנחנו מפספסים?</button>
-            <button class="q-token-btn" data-question="כיצד יכול AI להגדיל פי עשרה את הערך ללקוח?" aria-pressed="false">כיצד יכול AI להגדיל פי עשרה את הערך ללקוח?</button>
-            <button class="q-token-btn" data-question="איזה מודל עסקי יכול לשנות את כללי התחרות בענף שלנו?" aria-pressed="false">איזה מודל עסקי יכול לשנות את כללי התחרות בענף שלנו?</button>
-          </div>
-          <div class="built-question-box" id="built-q-box">
-            בחרו שאלה כדי למקד את השיחה.
-          </div>
-        </div>
-      ` : '';
-
       // Station 6: Flywheel Simulator
       let flywheelHtml = station.flywheelInteractive ? `
         <div class="flywheel-container">
@@ -279,7 +263,6 @@ function renderStations(data, parent) {
           ${dilemmaHtml}
           ${altitudeHtml}
           ${compHtml}
-          ${qBuilderHtml}
           ${flywheelHtml}
           ${quizHtml}
           ${roadmapHtml}
@@ -539,29 +522,6 @@ function setupStationInteractivity() {
       }
     });
   }
-
-  // Station 4: Question Era Builder
-  const qTokens = document.querySelectorAll('.q-token-btn');
-  const builtQBox = document.getElementById('built-q-box');
-
-  qTokens.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const wasActive = btn.classList.contains('active');
-      qTokens.forEach(token => {
-        token.classList.remove('active');
-        token.setAttribute('aria-pressed', 'false');
-      });
-      if (!wasActive) {
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
-      }
-      if (builtQBox) {
-        builtQBox.textContent = wasActive
-          ? 'בחרו שאלה כדי למקד את השיחה.'
-          : `״${btn.dataset.question}״`;
-      }
-    });
-  });
 
   // Station 6: Flywheel Simulator
   const flywheelBtn = document.getElementById('flywheel-btn');

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>המסע אל הבינה המלאכותית | חוויה אינטראקטיבית</title>
+
+  <!-- External Libraries CDNs -->
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Three.js for 3D Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GSAP for Smooth Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css?v=scroll-toggle-1">
+</head>
+<body>
+
+  <!-- 3D Canvas Background -->
+  <div id="three-canvas-container"></div>
+  <div class="weather-overlay"></div>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="logo-brand">
+      <i data-lucide="map" class="logo-icon"></i>
+      <span>המסע הארגוני האמיתי אל הבינה המלאכותית</span>
+    </div>
+    <nav class="continent-nav" id="continent-nav" aria-label="אזורי המסע"></nav>
+    <div class="nav-actions">
+      <button class="action-btn" id="restart-header-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <i data-lucide="compass"></i>
+        <span>להתחלה</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Stations Container -->
+  <main class="main-wrapper" id="main-stations-container">
+    <!-- Stations will be dynamically rendered from js/data.js by js/app.js -->
+  </main>
+
+  <!-- Journey progress compass -->
+  <div class="journey-hud-bar">
+    <div class="hud-location">
+      <span class="hud-continent" id="hud-continent">נקודת היציאה</span>
+      <span class="hud-station-label" id="hud-station-label">נקודת פתיחה</span>
+    </div>
+    <span class="hud-author">אמיר רוזן</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="hud-controls">
+      <button class="hud-arrow-btn" id="hud-prev" title="התחנה הקודמת">
+        <i data-lucide="chevron-up"></i>
+      </button>
+      <button class="hud-arrow-btn" id="hud-next" title="התחנה הבאה">
+        <i data-lucide="chevron-down"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="travel-transition" id="travel-transition" aria-live="polite" aria-hidden="true">
+    <div class="travel-card">
+      <div class="travel-status">מעבר למקטע הבא</div>
+      <div class="travel-route">
+        <span class="travel-from" id="travel-from"></span>
+        <div class="travel-line"><i data-lucide="navigation" class="travel-marker"></i></div>
+        <span class="travel-to" id="travel-to"></span>
+      </div>
+      <div class="travel-distance">מעבירים אותך ליעד</div>
+    </div>
+  </div>
+
+  <!-- App Logic Scripts -->
+  <script src="js/data.js?v=journey-clarity-1"></script>
+  <script src="js/three-scene.js?v=journey-clarity-1"></script>
+  <script src="js/app.js?v=scroll-toggle-1"></script>
+</body>
+</html>

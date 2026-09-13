@@ -162,19 +162,15 @@ function renderStations(data, parent) {
       // Station 4: Question Era Builder
       let qBuilderHtml = station.questionEraBuilder ? `
         <div class="question-era-game">
-          <h3 class="feature-title"><i data-lucide="cpu"></i> מחולל שאלות פורצות דרך</h3>
-          <p class="feature-text">בחרו מילות מפתח ליצירת השאלה האסטרטגית הבאה של הארגון שלכם:</p>
+          <h3 class="feature-title"><i data-lucide="cpu"></i> בחירת שאלה אסטרטגית</h3>
+          <p class="feature-text">בחרו שאלה אחת שתעזור למקד את הדיון הארגוני:</p>
           <div class="q-tokens" id="q-token-list">
-            <button class="q-token-btn" data-word="מה הברור מאליו">מה הברור מאליו</button>
-            <button class="q-token-btn" data-word="שאנחנו מפספסים">שאנחנו מפספסים</button>
-            <button class="q-token-btn" data-word="כיצד ה-AI יכול">כיצד ה-AI יכול</button>
-            <button class="q-token-btn" data-word="להכפיל ב-10">להכפיל ב-10</button>
-            <button class="q-token-btn" data-word="את הערך ללקוח">את הערך ללקוח</button>
-            <button class="q-token-btn" data-word="איזה מודל עסקי">איזה מודל עסקי</button>
-            <button class="q-token-btn" data-word="יבטל את המתחרה שלנו">יבטל את המתחרה שלנו</button>
+            <button class="q-token-btn" data-question="מהו הדבר הברור מאליו שאנחנו מפספסים?" aria-pressed="false">מהו הדבר הברור מאליו שאנחנו מפספסים?</button>
+            <button class="q-token-btn" data-question="כיצד יכול AI להגדיל פי עשרה את הערך ללקוח?" aria-pressed="false">כיצד יכול AI להגדיל פי עשרה את הערך ללקוח?</button>
+            <button class="q-token-btn" data-question="איזה מודל עסקי יכול לשנות את כללי התחרות בענף שלנו?" aria-pressed="false">איזה מודל עסקי יכול לשנות את כללי התחרות בענף שלנו?</button>
           </div>
           <div class="built-question-box" id="built-q-box">
-            לחצו על מילות המפתח לבניית שאלת אסטרטגיה...
+            בחרו שאלה כדי למקד את השיחה.
           </div>
         </div>
       ` : '';
@@ -547,24 +543,22 @@ function setupStationInteractivity() {
   // Station 4: Question Era Builder
   const qTokens = document.querySelectorAll('.q-token-btn');
   const builtQBox = document.getElementById('built-q-box');
-  const selectedWords = [];
 
   qTokens.forEach(btn => {
     btn.addEventListener('click', () => {
-      const word = btn.dataset.word;
-      if (btn.classList.contains('active')) {
-        btn.classList.remove('active');
-        const idx = selectedWords.indexOf(word);
-        if (idx > -1) selectedWords.splice(idx, 1);
-      } else {
+      const wasActive = btn.classList.contains('active');
+      qTokens.forEach(token => {
+        token.classList.remove('active');
+        token.setAttribute('aria-pressed', 'false');
+      });
+      if (!wasActive) {
         btn.classList.add('active');
-        selectedWords.push(word);
+        btn.setAttribute('aria-pressed', 'true');
       }
-
       if (builtQBox) {
-        builtQBox.textContent = selectedWords.length > 0 
-          ? `״${selectedWords.join(' ')}?״` 
-          : "לחצו על מילות המפתח לבניית שאלת אסטרטגיה...";
+        builtQBox.textContent = wasActive
+          ? 'בחרו שאלה כדי למקד את השיחה.'
+          : `״${btn.dataset.question}״`;
       }
     });
   });

@@ -177,15 +177,16 @@ body[data-continent="summit"] .weather-overlay { background-image: linear-gradie
 }
 .world-map-surface::before { content: ''; position: absolute; inset: 0; opacity: .23; background-image: linear-gradient(rgba(235, 241, 218, .25) 1px, transparent 1px), linear-gradient(90deg, rgba(235, 241, 218, .25) 1px, transparent 1px); background-size: 44px 44px; }
 .map-continent { position: absolute; z-index: 2; width: 175px; height: 105px; border: 1px solid rgba(246, 235, 178, .48); border-radius: 48% 52% 42% 58% / 58% 40% 60% 42%; background: #82945b; color: #fffef4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; cursor: pointer; font: 800 .9rem var(--font-main); box-shadow: 0 7px 14px rgba(7, 35, 32, .33); transition: transform .35s ease, background .35s ease, box-shadow .35s ease; }
-.map-continent:nth-of-type(1) { top: 42px; right: 11%; background: #b46d48; transform: rotate(-9deg); }
-.map-continent:nth-of-type(2) { top: 105px; left: 13%; background: #789e83; transform: rotate(8deg); }
-.map-continent:nth-of-type(3) { top: 225px; right: 26%; background: #998557; transform: rotate(-4deg); }
-.map-continent:nth-of-type(4) { bottom: 38px; left: 14%; background: #75939a; transform: rotate(7deg); }
+.map-continent:nth-of-type(1) { top: 42px; left: 11%; background: #b46d48; transform: rotate(-9deg); }
+.map-continent:nth-of-type(2) { top: 105px; left: 32%; background: #789e83; transform: rotate(8deg); }
+.map-continent:nth-of-type(3) { top: 225px; left: 53%; background: #998557; transform: rotate(-4deg); }
+.map-continent:nth-of-type(4) { bottom: 38px; left: 34%; background: #75939a; transform: rotate(7deg); }
 .map-continent:nth-of-type(5) { bottom: 78px; right: 6%; background: #a16254; transform: rotate(-10deg); }
 .map-continent svg { width: 24px; }
 .map-continent:hover { transform: scale(1.08) rotate(0); }
 .map-continent.current { background: #d18a45; border: 2px solid #fff4bf; box-shadow: 0 0 0 10px rgba(239, 194, 103, .18), 0 12px 30px rgba(5, 29, 30, .5); animation: continent-pulse 2.2s ease-in-out infinite; }
-.map-route { position: absolute; z-index: 1; right: 17%; top: 124px; width: 62%; height: 170px; border-left: 2px dashed rgba(245, 232, 166, .8); border-bottom: 2px dashed rgba(245, 232, 166, .8); border-radius: 0 0 0 85px; transform: rotate(-12deg); }
+.map-route { position: absolute; z-index: 1; left: 17%; top: 124px; width: 66%; height: 170px; border-right: 2px dashed rgba(245, 232, 166, .8); border-bottom: 2px dashed rgba(245, 232, 166, .8); border-radius: 0 0 85px 0; transform: rotate(12deg); }
+.map-route::after { content: ''; position: absolute; right: -6px; bottom: -7px; width: 11px; height: 11px; border-top: 2px solid rgba(245, 232, 166, .9); border-right: 2px solid rgba(245, 232, 166, .9); transform: rotate(45deg); }
 .enter-continent-btn { border: 1px solid #f2ce85; background: #f4ead2; color: #274e50; border-radius: 4px; padding: .85rem 1.35rem; cursor: pointer; font: 800 1rem var(--font-main); box-shadow: 0 8px 22px rgba(8, 30, 30, .3); }
 .enter-continent-btn:hover { background: #fff8e5; transform: translateY(-2px); }
 @keyframes continent-pulse { 50% { box-shadow: 0 0 0 18px rgba(239, 194, 103, .08), 0 12px 30px rgba(5, 29, 30, .5); } }
@@ -194,10 +195,10 @@ body[data-continent="summit"] .weather-overlay { background-image: linear-gradie
   .world-map-panel h2 { font-size: 2.25rem; }
   .world-map-surface { height: 380px; }
   .map-continent { width: 120px; height: 84px; font-size: .72rem; }
-  .map-continent:nth-of-type(1) { right: 7%; }
-  .map-continent:nth-of-type(2) { left: 7%; }
-  .map-continent:nth-of-type(3) { right: 22%; }
-  .map-continent:nth-of-type(4) { left: 5%; }
+  .map-continent:nth-of-type(1) { left: 7%; }
+  .map-continent:nth-of-type(2) { left: 29%; }
+  .map-continent:nth-of-type(3) { left: 51%; }
+  .map-continent:nth-of-type(4) { left: 27%; }
   .map-continent:nth-of-type(5) { right: 4%; }
 }
 
